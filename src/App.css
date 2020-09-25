@@ -1,0 +1,39 @@
+.h-100 {
+  height: 100%;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
+.content-hell-yeah {
+  margin-top: 64px;
+  padding: 20px 20px 0;
+}
+
+.content-hell-yeah .real-content {
+  background-color: #141414;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.header {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  padding: 0;
+}
+
+.w-no-sidebar {
+  width: calc(100vw - 200px);
+}
+
+section.light .logo {
+  background: rgba(168, 168, 168, 0.2);
+}
+section.light .real-content {
+  background-color: #fff;
+}
