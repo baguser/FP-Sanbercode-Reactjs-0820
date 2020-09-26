@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Typography, Image, Button, Popconfirm, Input, Tag } from 'antd';
+import { Table, Typography, Image, Button, Popconfirm, Input, Tag, Tooltip } from 'antd';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { SearchOutlined } from '@ant-design/icons';
 
 const GameList = (props) => {
   const [dataGames, setDataGames] = useState(null);
@@ -45,19 +46,39 @@ const GameList = (props) => {
         <Button type="primary">Add</Button>
       </Link>
 
-      <div style={{marginBottom: 10}} />
+      <div style={{marginBottom: 30}} />
 
+      <table>
+      <h3>filter</h3>
       <Input.Search
-        placeholder="Cari"
+        placeholder="Nama"
         onSearch={q => {
           const newData = dataGames.filter(v => {
-            return v.name.toLowerCase().includes(q) || v.release.toLowerCase().includes(q) || v.genre.toLowerCase().includes(q)
+            return v.name.toLowerCase().includes(q) || v.name.toLowerCase().includes(q) || v.genre.toLowerCase().includes(q)
           });
           setDataList(newData);
         }}
         size="large"
         style={{ width: 200 }}
       />
+
+      <Input.Search
+        placeholder="Realease"
+        onSearch={p => {
+          const newData = dataGames.filter(v => {
+            return v.release.toLowerCase().includes(p) || v.release.toLowerCase().includes(p) || v.release.toLowerCase().includes(p)
+          });
+          setDataList(newData);
+        }}
+        size="large"
+        style={{ width: 200 }}
+      />
+      <Button type="primary" icon={<SearchOutlined />} size="large"
+      style={{ width: 200 }} htmlType="submit">
+            Search
+      </Button>
+      </table>
+
 
       <div style={{marginBottom: 10}} />
 
@@ -66,9 +87,8 @@ const GameList = (props) => {
           ...v,
           no: (i+1),
           key: v.id,
-          name_release: <Typography.Paragraph>
-            <Typography.Text strong>{`${v.name} (${v.release})`}</Typography.Text>
-          </Typography.Paragraph>,
+          name:(`${v.name}`),
+          release: (`${v.release}`),
           image: <Image src={v.image_url} width={100} />,
           gameplay: <Typography.Paragraph>
             {v.singlePlayer > 0 ? <Tag>Singleplayer</Tag>:''}
@@ -99,10 +119,16 @@ const GameList = (props) => {
           key: 'image'
         },
         {
-          title: 'Name / Release',
-          dataIndex: 'name_release',
-          key: 'name_release',
+          title: 'Name ',
+          dataIndex: 'name',
+          key: 'name',
           sorter: (a, b) => (a.name > b.name) - (a.name < b.name),
+        },
+        {
+          title: 'Release',
+          dataIndex:'release',
+          key: 'release',
+          sorter: (a, b) => (a.release > b.release) - (a.release < b.release),
         },
         {
           title: 'Genre',

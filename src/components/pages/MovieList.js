@@ -45,18 +45,19 @@ const MovieList = (props) => {
         <Button type="primary">Add</Button>
       </Link>
 
-      <div style={{marginBottom: 10}} />
+      <div style={{marginBottom: 30}}  />
 
+      <h3> Filter </h3>
       <Input.Search
-        placeholder="Cari"
+        placeholder="Cari Nama"
         onSearch={q => {
           const newData = dataMovies.filter(v => {
-            return v.title.toLowerCase().includes(q) || v.description.toLowerCase().includes(q) || v.genre.toLowerCase().includes(q)
+            return v.title.toLowerCase().includes(q) || v.title.toLowerCase().includes(q) || v.genre.toLowerCase().includes(q)
           });
           setDataList(newData);
         }}
         size="large"
-        style={{ width: 200 }}
+        style={{ width: 400}}
       />
 
       <div style={{marginBottom: 10}} />
@@ -66,11 +67,8 @@ const MovieList = (props) => {
           ...v,
           no: (i+1),
           key: v.id,
-          title_year: <Typography.Paragraph>
-            <Typography.Text strong>{`${v.title} (${v.year})`}</Typography.Text>
-            <br />
-            {v.description}
-          </Typography.Paragraph>,
+          title: (`${v.title}`),
+          year: (`${v.year}`),
           image: <Image src={v.image_url} width={100} />,
           action: (
             <>
@@ -97,10 +95,16 @@ const MovieList = (props) => {
           key: 'image'
         },
         {
-          title: 'Title / Year',
-          dataIndex: 'title_year',
-          key: 'title_year',
+          title: 'Title',
+          dataIndex: 'title',
+          key: 'title',
           sorter: (a, b) => (a.title > b.title) - (a.title < b.title),
+        },
+        {
+          title: 'Year',
+          dataIndex: 'year',
+          key: 'year',
+          sorter: (a, b) => (a.year > b.year) - (a.year < b.year),
         },
         {
           title: 'Genre',
