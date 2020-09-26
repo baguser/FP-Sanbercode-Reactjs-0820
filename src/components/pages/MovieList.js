@@ -60,6 +60,7 @@ const MovieList = (props) => {
         style={{ width: 400}}
       />
 
+
       <div style={{marginBottom: 10}} />
 
       <Table dataSource={dataList !== null && dataList.map((v, i) => {
@@ -68,7 +69,7 @@ const MovieList = (props) => {
           no: (i+1),
           key: v.id,
           title: (`${v.title}`),
-          year: (`${v.year}`),
+          release: (`${v.release}`),
           image: <Image src={v.image_url} width={100} />,
           action: (
             <>
@@ -101,10 +102,10 @@ const MovieList = (props) => {
           sorter: (a, b) => (a.title > b.title) - (a.title < b.title),
         },
         {
-          title: 'Year',
-          dataIndex: 'year',
-          key: 'year',
-          sorter: (a, b) => (a.year > b.year) - (a.year < b.year),
+          title: 'Release',
+          dataIndex: 'release',
+          key: 'release',
+          sorter: (a, b) => (a.release > b.release) - (a.release < b.release),
         },
         {
           title: 'Genre',

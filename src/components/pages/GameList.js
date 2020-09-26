@@ -48,7 +48,7 @@ const GameList = (props) => {
 
       <div style={{marginBottom: 30}} />
 
-      <table>
+
       <h3>filter</h3>
       <Input.Search
         placeholder="Nama"
@@ -62,6 +62,8 @@ const GameList = (props) => {
         style={{ width: 200 }}
       />
 
+        <div style={{marginBottom: 10}} />
+
       <Input.Search
         placeholder="Realease"
         onSearch={p => {
@@ -73,11 +75,7 @@ const GameList = (props) => {
         size="large"
         style={{ width: 200 }}
       />
-      <Button type="primary" icon={<SearchOutlined />} size="large"
-      style={{ width: 200 }} htmlType="submit">
-            Search
-      </Button>
-      </table>
+
 
 
       <div style={{marginBottom: 10}} />

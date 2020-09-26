@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <>
-      <Typography.Title style={{textAlign: "center", margin:"200px"}}level={1}>Welcome Lur.....</Typography.Title>
+      <Typography.Title style={{textAlign: "center", margin:"200px"}}level={1}>Selamat Datang..</Typography.Title>
     </>
   );
 };
